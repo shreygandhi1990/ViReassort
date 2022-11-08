@@ -31,7 +31,7 @@ To run the pipeline on your own machine, you will first need to install the [**D
 
 
 ```
-*** docker run --rm -it vireassort:latest
+docker run --rm -it vireassort:latest
 ```
 
 The following command allows you to enter the ViReassort docker container and you should be able to access and run any of the installed softwares and/or custom scripts to process the data.
@@ -39,7 +39,7 @@ The following command allows you to enter the ViReassort docker container and yo
 
 To exit the container just type ```exit``` on the terminal window. You will see the command prompt reverting back to the original user directory.
  
-*** ![](docker_demo.png)
+![](./images/docker_init.png)
 
 
 ## Input requirements
@@ -53,7 +53,7 @@ To run ViReassort you require:
 Run the following command in a terminal to start the container.
 
 ```
-*** docker run --rm -it vireassort:latest 
+docker run --rm -it vireassort:latest 
 ```
 
 After running the command, you should be inside the ```/homes``` directory of the container. You should also be able to see the Example directory with sample reassortant virus FASTQ files and reference genomes of the parental strains.
@@ -64,7 +64,7 @@ cd Example
 ls
 ```
 
-*** ![](Example_demo.png)
+![](./images/Example.png)
 
 
 ### Step 1: Trimming the FASTQ files of the reassortant virus.
@@ -74,9 +74,11 @@ For the first step, the raw FASTQ read files from the reassortant virus are filt
 ```
 s1.sh 
 ```
+![](./images/s1.png)
+
 After running the above command, you will be prompted to provide the location (directory) of the raw FASTQ files. Please provide the same.
 
-*** ![](s1.png)
+![](./images/s1_res.png)
 
 If the script is executed successfully, there should be directory called ```s1_trimmed``` in the current folder containing trimmed FASTQ files. 
 **Note:** By default, the script will process all the FASTQ files present in the directory location which is provided by the user. In such cases where there are FASTQ files belonging to multiple samples, all the samples will be processed and the trimmed files will be present in the respective sample folders inside ```s1_trimmed``` directory.
@@ -91,10 +93,12 @@ s0_ref_prep.sh
 
 You will be asked to provide the location (directory) of the FASTA files. Please provide the same.
 
-*** ![](s0.png)
+![](./images/s0.png)
 
 If the script is executed successfully, then you should be able to see the ```completed``` directory which contains individual folders for both the reference genomes. 
 **Note:** By default, the script will process all the FASTA genome files present in the directory location which is provided by the user. In our case, we have two parental genome FASTA files which should result in two folders inside the ```completed``` directory (one for each of the reference/parental genomes).
+
+![](./images/s0_res.png)
 
 ### Step 3: Alignment and downstream analysis.
 
@@ -107,12 +111,19 @@ s2_final_version_faster.sh
 
 Users will be prompted to select the mode in which they want to run the script. For default behaviour please type 2 and press ```Enter```.
 
+![](./images/s2_init.png)
+
 Users will then be asked to enter the location of both the prepared genome files, followed by the location of the processed FASTQ folder and finally the directory where the output shall be saved. If the script is executed successfully, then you will be able to see the results in the specified location within the directory named ```s2_alignment_hybrid```.
 
+![](./images/s2.png)
 
 ## Output files:
 
-For each sample, the following files with respective prefixes will be generated for both the parental genomes. For the example results, the alignment to the pdm_reference genome will produce the following files:
+For each sample, the following files with respective prefixes will be generated for both the parental genomes. 
+
+![](./images/s2_res.png)
+
+For the example results, the alignment to the pdm_reference genome will produce the following files:
 
 1. reassortant_virus_R1_001_pdm_reference.bam - Initial alignnment file (BAM format) 
 2. reassortant_virus_R1_001_pdm_reference.sam  - Initial alignnment file (SAM format)
@@ -132,7 +143,7 @@ For each sample, the following files with respective prefixes will be generated 
 In order to process your data, you should mount the folder containing the raw FASTQ files of reassortant virus and the parental genome FASTA files onto the docker container. For example, in case your data is present in the directory ```/home/user/data/``` , then run the following command to mount the folder onto the ViReassort container:
 
 ```
-*** docker run --rm -it -v /home/user/data/:/homes vireassort:latest
+docker run --rm -it -v /home/user/data/:/homes vireassort:latest
 ```
 
 Once you have done so, you can run and execute the commands as shown above for the example files to obtain the final results.
