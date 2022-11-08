@@ -27,11 +27,13 @@ Here is the list of softwares installed within the Docker container.
 
 ## Using Docker
 
-To run the pipeline on your own machine, you will first need to install the [**Docker**](https://docs.docker.com/get-docker/) platform. Once the setup is complete, you can run the following command in a terminal to load the container
-
+To run the pipeline on your own machine, you will first need to install the [**Docker**](https://docs.docker.com/get-docker/) platform. Once the setup is complete, you have to pull the [ViReassort](https://hub.docker.com/r/shreygandhi1990/vireassort) docker image from docker hub. Finally, you can load the container by running the following command in a terminal.
 
 ```
-docker run --rm -it vireassort:latest
+docker pull shreygandhi1990/vireassort
+
+# to run the docker container:
+docker run --rm -it shreygandhi1990/vireassort
 ```
 
 The following command allows you to enter the ViReassort docker container and you should be able to access and run any of the installed softwares and/or custom scripts to process the data.
@@ -53,7 +55,7 @@ To run ViReassort you require:
 Run the following command in a terminal to start the container.
 
 ```
-docker run --rm -it vireassort:latest 
+docker run --rm -it shreygandhi1990/vireassort 
 ```
 
 After running the command, you should be inside the ```/homes``` directory of the container. You should also be able to see the Example directory with sample reassortant virus FASTQ files and reference genomes of the parental strains.
@@ -143,7 +145,7 @@ For the example results, the alignment to the pdm_reference genome will produce 
 In order to process your data, you should mount the folder containing the raw FASTQ files of reassortant virus and the parental genome FASTA files onto the docker container. For example, in case your data is present in the directory ```/home/user/data/``` , then run the following command to mount the folder onto the ViReassort container:
 
 ```
-docker run --rm -it -v /home/user/data/:/homes vireassort:latest
+docker run --rm -it -v /home/user/data/:/homes shreygandhi1990/vireassort
 ```
 
 Once you have done so, you can run and execute the commands as shown above for the example files to obtain the final results.
