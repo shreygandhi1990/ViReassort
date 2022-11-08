@@ -1,6 +1,6 @@
 # ViReassort
 
-![ViReassort_logo](./images/Vireassort_logo.tiff)
+![ViReassort_logo](./images/Vireassort_logo.png)
 
 ## About
 
