@@ -153,4 +153,5 @@ Once you have done so, you can run and execute the commands as shown above for t
 
 
 ## Citation
-Please cite the link to this repository if you use the pipeline.
+Please cite the following paper if you use the pipeline:
+Ferrando, V. A., Friedrich, M. E., Gandhi, S., Mellmann, A., Masemann, D., Christersson, A., Anhlan, D., Brunotte, L., Stoll, M., Harder, T., Beer, M., Boergeling, Y., & Ludwig, S. (2023). Cell-intrinsic genomic reassortment of pandemic H1N1 2009 and Eurasian avian-like swine influenza viruses results in potentially zoonotic variants. https://doi.org/10.1080/22221751.2023.2212809
